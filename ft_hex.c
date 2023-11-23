@@ -10,16 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_hex(int num)
+void	ft_hex(unsigned int num, char c)
 {
 	int	aux;
 	char	*hex;
-	char	*n;
 
-	hex = "0123456789ABCDEF";
-	if (num > 16)
+	aux = 0;
+	if (c == 'x' || c == 'p')
+		hex = "0123456789abcdef";
+	else
+		hex = "0123456789ABCDEF";
+	if (num > 15)
 	{
-		n[0] = hex[num % 16];
-		num = num / 16;
+		ft_hex(num / 16, c);
+		aux ++;
 	}
+	aux ++;
+	write(1, &hex[num % 16], 1);
+	return (aux);
 }
